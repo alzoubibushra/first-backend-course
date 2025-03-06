@@ -46,5 +46,3 @@ app.get("/facts",(req,res)=>{
 app.listen(3000,()=>{
     console.log("listen on port number 3000");
 });
-
-
