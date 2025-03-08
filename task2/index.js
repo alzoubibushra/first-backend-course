@@ -1,50 +1,44 @@
-const express = require("express");
-const app=express();
 
-app.get("/",(req,res)=>{
-    res.send("hello from express");
-    
-    })
+//1-create an empty array of students to store students object
+let students=[];
 
-const fortunes = [
-    "You will have a great day! 😊",
-    "A surprise gift is on its way! 🎁",
-    "Adventure is waiting for you! 🏕",
-    "Success is closer than you think! 🚀",
-    "Happiness comes from within! 💛"
-];
-
-const jokes = [
-    "Why don’t skeletons fight each other? They don’t have the guts! 😂",
-    "Why did the math book look sad? Because it had too many problems. 📖",
-    "Parallel lines have so much in common. It’s a shame they’ll never meet. 😆"
-];
-
-const facts = [
-    "Did you know? Honey never spoils! 🍯",
-    "Bananas are berries, but strawberries aren't! 🍌🍓",
-    "Octopuses have three hearts! 🐙"
-];
+//2-create a function createstudent that return obj 
+function createstudent(name,age,mark){
+    return {name:name,age:age,mark:mark};
+}
 
 
-app.get("/fortunes",(req,res)=>{
-const fortunesNumber=Math.floor(Math.random()*5);
-res.send(fortunes[fortunesNumber]);
+//3-add the student that return from the function to student array
+students.push(createstudent("Khattab",20,70));
+students.push(createstudent("amr",20,80));
+students.push(createstudent("sara",20,90));
+students.push(createstudent("ramy",20,10));
+students.push(createstudent("aya",20,100));
 
-})
 
-app.get("/jokes",(req,res)=>{
-    const jokesNumber=Math.floor(Math.random()*3);
-    res.send(jokes[jokesNumber]);
-})
+//4-create array for success students
+let successStudents =[];
 
-app.get("/facts",(req,res)=>{
-    const factsNumber=Math.floor(Math.random()*3);
-    res.send(facts[factsNumber]);
-})
-  
-app.listen(3000,()=>{
-    console.log("listen on port number 3000");
-});
+//5-create array for failed students
+let failedStudents =[];
+
+
+//6-for an students array
+// a-if the mark more than 50 add it to success students
+// b-else add the student to failed students
+for(let i=0;i<students.length;i++){
+    if(students[i].mark>=50){
+        successStudents.push(students[i]);
+    }
+    else{
+        failedStudents.push(students[i]);
+    }
+}
+
+//7-print the success students and faild students
+console.log("success Students",successStudents);
+console.log("failed  Students",failedStudents);
+
+
 
 
